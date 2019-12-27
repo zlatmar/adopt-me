@@ -1,11 +1,8 @@
 import React, { useState, lazy, Suspense } from 'react';
-import { render } from 'react-dom';
 import { Router, Link } from '@reach/router';
 import ThemeContext from './ThemeContext';
-import NavBar from './NavBar';
-
-const Details = lazy(() => import('./Details'))
-const SearchParams = lazy(() => import('./SearchParams'))
+import SearchParams from './SearchParams';
+import Details from './Details';
 
 
 const App = () => {
@@ -15,17 +12,17 @@ const App = () => {
         <React.StrictMode>
             <ThemeContext.Provider value={themeHook}>
                 <div>
-                    <NavBar />
-                    <Suspense fallback={<h1>loading route...</h1>}>
-                        <Router>
-                            <SearchParams path="/" />
-                            <Details path="/details/:id"></Details>
-                        </Router>
-                    </Suspense>
+                    <header>
+                        <Link to="/">Adopt Me!</Link>
+                    </header>
+                    <Router>
+                        <SearchParams path="/" />
+                        <Details path="/details/:id"></Details>
+                    </Router>
                 </div>
             </ThemeContext.Provider>
         </React.StrictMode>
     );
 };
 
-render(<App />, document.getElementById("root"));
+export default App;
