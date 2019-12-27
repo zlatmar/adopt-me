@@ -3,6 +3,7 @@ import { Router, Link } from '@reach/router';
 import ThemeContext from './ThemeContext';
 import SearchParams from './SearchParams';
 import Details from './Details';
+import ReactDOM from 'react-dom';
 
 
 const App = () => {
@@ -17,7 +18,7 @@ const App = () => {
                     </header>
                     <Router>
                         <SearchParams path="/" />
-                        <Details path="/details/:id"></Details>
+                        <Details path="/details/:id" />
                     </Router>
                 </div>
             </ThemeContext.Provider>
@@ -25,4 +26,4 @@ const App = () => {
     );
 };
 
-export default App;
+ReactDOM.render(<App />, document.getElementById("root"));
